@@ -11,11 +11,18 @@
 
 var config = require('../config.js')[process.env.NODE_ENV],
     winston = require('winston'),
-    logger = new(winston.Logger)({
-        transports: [
-            new(winston.transports.Console)(config['logger'].console),
-            new(winston.transports.File)(config['logger'].file)
-        ]
-    });
+    logger = null;
 
-exports.object = logger;
+var _getLogger = function() {
+    if (!logger) {
+        logger = new(winston.Logger)({
+            transports: [
+                new(winston.transports.Console)(config['logger'].console),
+                new(winston.transports.File)(config['logger'].file)
+            ]
+        });
+    }
+    return logger;
+};
+
+exports.getLoggerObject = _getLogger;

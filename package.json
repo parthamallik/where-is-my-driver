@@ -28,6 +28,8 @@
 	},
 	"dependencies": {
 		"body-parser": "*",
+		"bookshelf": "*",
+		"knex": "*",
 		"bluebird": "*",
 		"connect-debounce": "*",
 		"connect-timeout": "*",

@@ -12,9 +12,9 @@
 /*
  * Load the configurations and other
  * modules needed for setting up the express server
-*/
+ */
 var config = require('./config.js')[process.env.NODE_ENV],
-    logger = require('./helpers/logger.js').object,
+    logger = require('./helpers/logger.js').getLoggerObject(),
     express = require('express'),
     cors = require('cors'),
     bodyParser = require('body-parser'),
@@ -28,8 +28,11 @@ gatewayServer
     .use(timeout(10000)) // Do't want server to take more than 10 seconds to respond
     .use(bodyParser.json()) // Accepts json body max to 100 kb default
     .use(bodyParser.text()) // Accepts text body max to 100 kb default
-    .use(bodyParser.urlencoded({'extended': true})); // Parse urlencoded body with qs library
+    .use(bodyParser.urlencoded({
+        'extended': true
+    })); // Parse urlencoded body with qs library
 
 gatewayServer.listen(config['webserver'].port, function() {
-    logger.debug('Server started.. Listening on ', config['webserver'].port)
+    logger.info('Server started in', process.env.NODE_ENV, 'mode.');
+    logger.info('Listening on ', config['webserver'].port);
 });
