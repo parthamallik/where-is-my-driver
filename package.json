@@ -1,0 +1,60 @@
+{
+	"name": "where-is-my-driver",
+	"version": "0.0.1",
+	"description": "A nodejs project to maintain spatial geometry of drivers and search nearby drivers",
+	"keywords": [
+		"gis",
+		"driver"
+	],
+	"author": {
+		"name": "Partha Mallik",
+		"email": "mallik.partha@gmail.com",
+		"url": "https://github.com/parthamallik"
+	},
+	"homepage": "https://github.com/parthamallik",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/parthamallik/where-is-my-driver.git"
+	},
+	"main": "index.js",
+	"scripts": {
+		"postinstall": "",
+		"postupdate" : "",
+		"start": "node index.js",
+		"test": "echo Not implemented"
+	},
+	"engines": {
+		"node": ">=0.10"
+	},
+	"dependencies": {
+		"body-parser": "*",
+		"bluebird": "*",
+		"connect-debounce": "*",
+		"connect-timeout": "*",
+		"cors": "*",
+		"express": "*",
+		"mocha": "*",
+		"winston": "*"
+	},
+	"devDependencies": {
+	},
+	"maintainers": [
+		{
+			"name": "Partha Mallik",
+			"email": "mallik.partha@gmail.com",
+			"url": "https://github.com/parthamallik"
+		}
+	],
+	"contributors": [
+		{
+			"name": "Partha Mallik",
+			"email": "mallik.partha@gmail.com",
+			"url": "https://github.com/parthamallik"
+		}
+	],
+	"bugs": {
+		"url": "https://github.com/parthamallik/where-is-my-driver/issues",
+		"email": "mallik.partha@gmail.com"
+	},
+	"licenses": "MITNFA"
+}
