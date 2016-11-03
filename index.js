@@ -20,7 +20,9 @@ var config = require('./config.js')[process.env.NODE_ENV],
     bodyParser = require('body-parser'),
     debounce = require('connect-debounce'),
     timeout = require('connect-timeout'),
-    gatewayServer = express();
+    gatewayServer = express(),
+    driver = require('./modules/driver.js'),
+    rider = require('./modules/rider.js');
 
 gatewayServer
     .use(debounce()) // To prevent DOS and DDOS attacks
@@ -31,6 +33,9 @@ gatewayServer
     .use(bodyParser.urlencoded({
         'extended': true
     })); // Parse urlencoded body with qs library
+
+gatewayServer.put("/drivers/:id/location", driver.createUpdateDetails);
+gatewayServer.get("/drivers", rider.findMyDriver);
 
 gatewayServer.listen(config['webserver'].port, function() {
     logger.info('Server started in', process.env.NODE_ENV, 'mode.');

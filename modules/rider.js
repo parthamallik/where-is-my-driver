@@ -8,3 +8,12 @@
  */
 
 "use strict";
+
+var logger = require('../helpers/logger.js').getLoggerObject(),
+    dbOperations = require('../helpers/database.js').getDbOperations();
+
+var _findMyDriver = function(request, response, next) {
+
+};
+
+exports.findMyDriver = _findMyDriver;

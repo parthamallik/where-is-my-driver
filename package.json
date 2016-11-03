@@ -36,6 +36,7 @@
 		"cors": "*",
 		"express": "*",
 		"mocha": "*",
+		"pg": "*",
 		"winston": "*"
 	},
 	"devDependencies": {
