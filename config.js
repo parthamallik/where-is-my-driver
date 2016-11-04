@@ -5,7 +5,7 @@ exports.development = {
     },
     'database': {
         'pool': {
-            'max': 2,
+            'max': 20,
             'min': 1
         },
         'debug': true,
@@ -14,8 +14,8 @@ exports.development = {
             'host': '127.0.0.1',
             'port': '5432',
             'user': 'postgres',
-            'database': 'drivers',
-            'password': 'postgres'
+            'database': 'mytaxi',
+            'password': 'postgres123'
         }
     },
     'logger': {
@@ -45,17 +45,17 @@ exports.production = {
     },
     'database': {
         'pool': {
-            'max': 2,
+            'max': 20,
             'min': 1
         },
-        'debug': true,
+        'debug': false,
         'client': 'pg',
         'connection': {
             'host': '127.0.0.1',
             'port': '5432',
             'user': 'postgres',
-            'database': 'drivers',
-            'password': 'postgres'
+            'database': 'mytaxi',
+            'password': 'postgres123'
         }
     },
     'logger': {
