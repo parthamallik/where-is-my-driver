@@ -1,9 +1,10 @@
 # where-is-my-driver
 A nodejs project to maintain spatial geometry of drivers and search nearby drivers.
-Driver details can be added and search within perticular radius.
 
 ## Tech Stack
- - Nodejs -> Express -> Postgress with postGIS
+ - Nodejs -> Express -> Postgres with postGIS
+
+    Nodejs is known for efficient handling of concurrent requests. PostGIS extension is fantastic to work with GIS data. Entry point for the application is index.js. Application can be launched with a mode (development/production). Development mode is configured with debug logs. All the configurations present in the config.js file. All the database interactions happen from helpers/database.js and the template sqls present in helpers/query.js. Error codes and messages are separated out in errors.js file. package.json is configured to handle project dependencies. 
 
 ## Installation for Ubuntu
 

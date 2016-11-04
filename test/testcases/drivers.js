@@ -14,7 +14,7 @@ var assert = require('chai').assert,
     promises = require('bluebird'),
     rest = promises.promisifyAll(require('../restCall.js')),
     promises = require('bluebird'),
-    LOAD = 10;
+    LOAD = 100;
 
 describe('Add drivers', function() {
     before(function(done) {
