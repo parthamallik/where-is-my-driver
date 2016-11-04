@@ -27,6 +27,9 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
 ## Project Configuration
 
 ### Configure database
+ - sudo -u postgres psql 
+ - \password // Change the password  for the user postgres and add the same in the config.js (-currrently has postgres123) under the project folder. 
+ - \q // Exit the psql app
  - sudo -u postgres createdb mytaxi // Create the database
  - sudo -u postgres psql mytaxi // Login to the DB
  - CREATE EXTENSION postgis; // Enable GIS EXTENSION
