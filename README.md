@@ -4,7 +4,7 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
 ## Tech Stack
  - Nodejs -> Express -> Postgres with postGIS
 
-    Nodejs is known for efficient handling of concurrent requests. PostGIS extension is fantastic to work with GIS data. Entry point for the application is index.js. Application can be launched with a mode (development/production). Development mode is configured with debug logs. All the configurations present in the config.js file. All the database interactions happen from helpers/database.js and the template sqls present in helpers/query.js. Error codes and messages are separated out in errors.js file. package.json is configured to handle project dependencies. 
+    Nodejs is known for efficient handling of concurrent requests. PostGIS extension is fantastic to work with GIS data. Entry point for the application is index.js. Application can be launched with a mode (development/production). Development mode is configured with debug logs. All the configurations present in the config.js file. All the database interactions happen from helpers/database.js and the template sqls present in helpers/query.js. Error codes and messages are separated out in errors.js file. package.json is configured to handle project dependencies.
 
 ## Installation for Ubuntu
 
@@ -27,8 +27,10 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
 ## Project Configuration
 
 ### Configure database
- - sudo -u postgres psql 
- - \password // Change the password  for the user postgres and add the same in the config.js (-currrently has postgres123) under the project folder. 
+    Postgres user is used to connect from app. Password needs to be set in order to use it. A DB needs to be created and postgis extension needs to enabled on that. Then the table and index need to be created.
+
+ - sudo -u postgres psql
+ - \password // Change the password  for the user postgres and add the same in the config.js (-currrently has postgres123) under the project folder.
  - \q // Exit the psql app
  - sudo -u postgres createdb mytaxi // Create the database
  - sudo -u postgres psql mytaxi // Login to the DB
