@@ -5,6 +5,7 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
  - Nodejs -> Express -> Postgres with postGIS
 
     Nodejs is known for efficient handling of concurrent requests. PostGIS extension is fantastic to work with GIS data. Entry point for the application is index.js. Application can be launched with a mode (development/production). Development mode is configured with debug logs. All the configurations present in the config.js file. All the database interactions happen from helpers/database.js and the template sqls present in helpers/query.js. Error codes and messages are separated out in errors.js file. package.json is configured to handle project dependencies.
+    A fresh Ubuntu aws-micro instance is taken and and configured for the project. Available at https://54.165.92.52:9001/drivers
 
 ## Installation for Ubuntu
 
@@ -13,7 +14,6 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
  - curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
  - sudo apt-get install nodejs
  - sudo npm update npm -g
- - sudo npm update npm -g (again)
 
 ### Postgres
  - sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt xenial-pgdg main" >> /etc/apt/sources.list'
@@ -21,7 +21,7 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
  - sudo apt-get update
  - sudo apt-get install postgresql-9.5-postgis-2.2 postgresql-contrib-9.5
  - sudo vim /etc/postgresql/9.5/main/pg_hba.conf
-    - update to host    all     all     172.0.0.1/31   password // So that the app can connect with password
+    - update the line:  host    all     all     172.0.0.1/31   password // So that the app can connect with password
  - sudo /etc/init.d/postgresql restart
 
 ## Project Configuration
@@ -37,6 +37,7 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
  - CREATE EXTENSION postgis; // Enable GIS EXTENSION
  - CREATE TABLE driver_loc ( ID integer PRIMARY KEY, location GEOGRAPHY(POINT,4326), ACCURACY real ); // Create the table
  - CREATE INDEX driver_loc_gix ON driver_loc USING GIST ( location ); // Create an index
+ - \q // Exit psql app
 
 ### install node dependencies
  - npm install

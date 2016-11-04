@@ -3,12 +3,10 @@ exports.english = {
         'code': 422,
         'message': 'Required parameter(s) not present'
     },
-
     'ERR_WRONG_PARAMETER': {
         'code': 400,
         'message': 'Incorrect parameters'
     },
-
     'ERR_LONGITUDE_INVALID': {
         'code': 422,
         'message': 'Longitude should be between +/- 180'
