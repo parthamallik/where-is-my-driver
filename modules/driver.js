@@ -18,18 +18,24 @@ var logger = require('../helpers/logger.js').getLoggerObject(),
 var _createUpdateDetails = function(request, response, next) {
 
     logger.debug('Update driver request ', request.body);
-    
+
     // Check for Invalid driver id
     if(request.params.id < 1 || request.params.id > 50000) {
         logger.error('Invalid driver id for update driver request', request.params.id);
         response.status(errors.ERR_INVALID_DRIVER.code).json(errors.ERR_INVALID_DRIVER.message);
         return;
     }
+    // Check for semantics correctness of request body
+    if(!request.body.longitude || !request.body.latitude ) {
+        logger.error('Missing details in request body for ', request.params.id);
+        response.status(errors.ERR_MISSING_PARAMETER.code).json(errors.ERR_MISSING_PARAMETER.message);
+        return;
+    }
     // Check for Invalid geometry
-    var status = utilities.validateGeometry(request.body.longitude, request.body.latitude);
+    var status = utilities.validateGeometry(request.body.longitude, request.body.latitude, request.body.accuracy);
     if(status.errors && status.errors.length > 0) {
-        logger.error('Invalid geometry for update driver request', request.body.longitude, request.body.latitude);
-        response.status(errors.ERR_LATITUDE_INVALID.code).json(status);
+        logger.error('Invalid geometry for update driver request', request.body);
+        response.status(errors.ERR_GENERIC.code).json(status);
         return;
     } else {
         // Update driver information
@@ -40,7 +46,7 @@ var _createUpdateDetails = function(request, response, next) {
         })
         .catch(function(err) {
             logger.error('Could not update driver details. Error', err);
-            response.status(err.number || err.code || errors.ERR_GENERIC.code).json({"errors": [err.message || errors.ERR_GENERIC.message]});
+            response.status(errors.ERR_GENERIC.code).json({"errors": [errors.ERR_GENERIC.message]});
         })
     }
 };

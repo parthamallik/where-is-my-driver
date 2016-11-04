@@ -11,12 +11,16 @@
 
 var errors = require('../errors.js').english;
 
-exports.validateGeometry = function(longitude,latitude) {
+exports.validateGeometry = function(longitude,latitude, accuracy) {
     var response = {'errors':[]};
-    if(Math.abs(longitude) > 180) {
+
+    if(isNaN(accuracy) || Math.abs(accuracy) > 1) {
+        response.errors.push(errors.ERR_ACCURACY_INVALID.message);
+    }
+    if(isNaN(longitude) || Math.abs(longitude) > 180) {
         response.errors.push(errors.ERR_LONGITUDE_INVALID.message);
     }
-    if(Math.abs(latitude) > 90) {
+    if(isNaN(latitude) || Math.abs(latitude) > 90) {
         response.errors.push(errors.ERR_LATITUDE_INVALID.message);
     }
     return response;

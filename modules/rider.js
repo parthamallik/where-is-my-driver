@@ -10,7 +10,10 @@
 "use strict";
 
 var logger = require('../helpers/logger.js').getLoggerObject(),
-    dbOperations = require('../helpers/database.js').getDbOperations();
+    utilities = require('./utility.js'),
+    promises = require('bluebird'),
+    errors = require('../errors.js').english,
+    dbOperationsAsync = promises.promisifyAll(require('../helpers/database.js').getDbOperations());
 
 var _findMyDriver = function(request, response, next) {
 

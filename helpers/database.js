@@ -42,6 +42,7 @@ var _dbOperations = {
             callback(null,result);
         })
         .catch(function(err){
+            logger.error('Could not run query. Error:', err)
             callback(err);
         });
     },

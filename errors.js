@@ -1,7 +1,7 @@
 exports.english = {
-    'ERR_PARSE_BODY': {
+    'ERR_MISSING_PARAMETER': {
         'code': 422,
-        'message': 'Request body is not a valid json'
+        'message': 'Required parameter(s) not present'
     },
     'ERR_LONGITUDE_INVALID': {
         'code': 422,
@@ -10,6 +10,10 @@ exports.english = {
     'ERR_LATITUDE_INVALID': {
         'code': 422,
         'message': 'Latitude should be between +/- 90'
+    },
+    'ERR_ACCURACY_INVALID': {
+        'code': 422,
+        'message': 'Accuracy should be between 0 - 1'
     },
     'ERR_INVALID_DRIVER': {
         'code': 404,
