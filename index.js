@@ -10,9 +10,16 @@
 "use strict";
 
 /*
+ * In case the environment is not specified
+ * Assume it to be development
+*/
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
+/*
  * Load the configurations and other
  * modules needed for setting up the express server
  */
+
 var config = require('./config.js')[process.env.NODE_ENV],
     logger = require('./helpers/logger.js').getLoggerObject(),
     express = require('express'),

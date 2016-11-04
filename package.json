@@ -21,7 +21,7 @@
 		"postinstall": "",
 		"postupdate" : "",
 		"start": "node index.js",
-		"test": "echo Not implemented"
+		"test": "mocha test/testcases"
 	},
 	"engines": {
 		"node": ">=0.10"
