@@ -27,7 +27,7 @@ A nodejs project to maintain spatial geometry of drivers and search nearby drive
 ## Project Configuration
 
 ### Configure database
-    Postgres user is used to connect from app. Password needs to be set in order to use it. A DB needs to be created and postgis extension needs to enabled on that. Then the table and index need to be created.
+   postgres user is used to connect from app. Password needs to be set in order to use it. A DB needs to be created and postgis extension needs to enabled on that. Then the table and index need to be created.
 
  - sudo -u postgres psql
  - \password // Change the password  for the user postgres and add the same in the config.js (-currrently has postgres123) under the project folder.
