@@ -27,7 +27,7 @@ var _createUpdateDetails = function(request, response, next) {
     }
     // Check for semantics correctness of request body
     if(!request.body.longitude || !request.body.latitude ) {
-        logger.error('Missing details in request body for ', request.params.id);
+        logger.error('Missing details in request body for ', request.params.id, request.body);
         response.status(errors.ERR_MISSING_PARAMETER.code).json(errors.ERR_MISSING_PARAMETER.message);
         return;
     }

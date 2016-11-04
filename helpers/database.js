@@ -47,7 +47,21 @@ var _dbOperations = {
         });
     },
     'findDriver': function(longitude, latitude, radius, limit, callback) {
+        var query = queries['findDriver'];
+        query = query.replace(/#longitude#/g, longitude)
+            .replace(/#latitude#/g, latitude)
+            .replace(/#radius#/g, radius)
+            .replace(/#limit#/g, limit);
 
+        logger.debug('Raw query for find driver', query);
+        databaseConnection.knex.raw(query)
+        .then(function(result){
+            callback(null,result.rows);
+        })
+        .catch(function(err){
+            logger.error('Could not run query. Error:', err)
+            callback(err);
+        });
     }
 };
 
